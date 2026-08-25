@@ -4,13 +4,18 @@
 
 ## Package
 
-- Version: `0.1.1`
+- Version: `0.1.2`
 - Image target: `/R4OS/PROTOCOLS/USBSCSI.R4P`
 - Image scope: `slim`
 - Canonical project manifest: `module.R4MF`
 
 The manifest is the single source of truth for the artifact, imports, image
 target, and package metadata.
+
+The protocol builds READ CAPACITY(10/16), READ/WRITE(10/16), inquiry, sense,
+mode and cache CDBs. Transfer sizes use the reported logical block size; a
+READ CAPACITY(10) sentinel selects the 64-bit capacity response required for
+media beyond the 32-bit LBA boundary.
 
 ## Build
 

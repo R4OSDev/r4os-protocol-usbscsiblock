@@ -1,8 +1,8 @@
-# R4OS 0.58.35 protocol project manifest.
+# R4OS 0.69.43 protocol project manifest.
 R4OS_MODULE_MANIFEST=2
 KIND=R4P
 NAME=USBSCSI
-VERSION=0.1.1
+VERSION=0.1.2
 LANGUAGE=Zig
 SOURCE=src/main.zig
 TARGET=/R4OS/PROTOCOLS/USBSCSI.R4P
@@ -15,5 +15,5 @@ META=module.name=R4P_USBSCSI
 META=r4p.dep=usb.msc_bot
 META=description=USB SCSI block CDB and response parser
 META=feature=dispatch
-META=sector=512
+META=sector=variable-512-65536
 META=preload.target=/boot/preload/usbscsi.r4p

@@ -1,24 +1,25 @@
 ﻿USBSCSI.R4P
 ===========
 
-Projektstruktur seit 0.51.22
---------------------------------
+USBSCSI.R4P besitzt den USB-SCSI-Blockvertrag. Version 0.1.2 ergaenzt
+READ CAPACITY(16), READ(16), WRITE(16), 64-Bit-LBAs und variable logische
+Blockgroessen. READ/WRITE(10) bleibt fuer vollstaendig im 32-Bit-LBA-Bereich
+liegende Anforderungen erhalten. Meldet READ CAPACITY(10) den Sentinel
+0xFFFFFFFF, wird die Kapazitaet aus der 16-Byte-Variante bezogen.
 
-Dieses Verzeichnis ist ein eigenstaendiges R4OS-SDK-Projekt fuer USBSCSI.R4P.
+Die Transferlaenge entsteht aus Blockanzahl mal gemeldeter logischer
+Blockgroesse und wird ueberlaufgeprueft. Der Selbsttest deckt 512-Byte- und
+4-KiB-Bloecke, READ/WRITE(16), den Capacity-10-Sentinel und eine
+Capacity-16-Antwort oberhalb 2 TiB ab.
 
-Build:
+Build unter Windows:
 
-    cd Code\System\Protocols\UsbScsiBlock
-    ..\..\..\DevTools\Zig\zig.exe build
+    Build.bat
 
-Artefakt:
+Build unter Linux:
 
-    zig-out\USBSCSI.R4P
+    ./Build.sh
 
-Manifest:
-
-    module.R4MF
-
-Image-Zielpfad: C:\R4OS\PROTOCOLS\USBSCSI.R4P
-
-Fruehladepfad: /boot/preload/usbscsi.r4p
+Das Artefakt wird gemaess `module.R4MF` als `USBSCSI.R4P` fuer
+`C:\R4OS\PROTOCOLS\USBSCSI.R4P` und den Fruehladepfad
+`/boot/preload/usbscsi.r4p` gebaut.
